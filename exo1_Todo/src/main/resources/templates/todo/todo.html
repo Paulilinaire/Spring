@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
@@ -12,7 +12,12 @@
     <hr>
     <p>Titre : <span th:text="${title}"></span></p>
     <p>Description : <span th:text="${description}"></span></p>
-    <p>Done : <span th:text="${done}"></span></p>
+    <p>Statut : <span th:text="${status}"></span></p>
+    <hr>
+    <p>Titre : <span th:text="${todo.title}"></span></p>
+    <p>Description : <span th:text="${todo.description}"></span></p>
+    <p th:if="${todo.done}">Statut : <span>Fini</span></p>
+    <p th:if="${!todo.done}">Statut : <span>En cours</span></p>
 </main>
 
 </body>

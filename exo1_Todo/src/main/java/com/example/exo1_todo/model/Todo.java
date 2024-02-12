@@ -1,4 +1,4 @@
-package com.example.exo1_todo.entity;
+package com.example.exo1_todo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Todo {
     private String title;
     private String description;
-    private boolean done;
+    private boolean isDone;
 }
