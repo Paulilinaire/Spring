@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Page B</title>
@@ -13,6 +13,14 @@
         <!--prendre l'adresse url de la page-->
     </nav>
 </header>
+    <div class="container">
 
+<ul class="list-group list-group-flush" th:unless="${bunnies.isEmpty()}">
+    <li class="list-group-item" th:each="bunny : ${bunnies}">
+        <a th:href="@{/detail/{id}(id=${bunny.id})}" th:text="'Détail d\'un lapin ' + ${bunny.id}"></a>
+    </li>
+</ul>
+
+</div>
 </body>
 </html>
