@@ -5,10 +5,7 @@ import com.example.demo_fragments.model.Bunny;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -71,5 +68,26 @@ public class DemoController {
         System.out.println(bunny.getBreed());
         bunnyService.addBunny(bunny);
         return "redirect:/";
+    }
+
+    @GetMapping("/addbunny") // formulaire en mode get
+    public String submitBunnyTwo(@RequestParam("name") String name, @RequestParam("breed") String breed){
+        System.out.println(name);
+        System.out.println(breed);
+        bunnyService.addBunny(new Bunny(null,name,breed));
+        return "redirect:/";
+    }
+
+    @GetMapping("/look")
+    public String showBunny(@RequestParam(value = "namebunny", required = false) String name, Model model){
+        System.out.println(name);
+        Bunny bunny = bunnyService.getBunnyByName(name);
+
+        if(bunny != null){ // on vérifie q'il y a bien un lapin qui existe sous le nom qu'on recherche
+            model.addAttribute("myBunny", bunny);
+        return "pageC"; // adresse url de la page http://localhost:8080/look?namebunny=Bugs Bunny
+        } else {
+            return "pageD";
+        }
     }
 }

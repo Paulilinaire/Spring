@@ -50,7 +50,21 @@ public class BunnyService {
         return bunnies.get(id);
     }
 
-    public void addBunny(Bunny bunny){
-        bunnies.put(bunny.getId(), bunny);
+    public boolean addBunny(Bunny bunny){
+//        Bunny bunnyToAdd = Bunny.builder()
+//                .id(UUID.randomUUID())
+//                .name(bunny.getName())
+//                .breed(bunny.getBreed())
+//                .build();
+        if (bunny.getId() == null){ // si id est null, cad que l'id n'a pas encore d'id, on peut le set et l'ajouter
+            bunny.setId(UUID.randomUUID());
+            bunnies.put(bunny.getId(), bunny);
+            return true;
+        } else
+            return false;
+    }
+
+    public Bunny getBunnyByName(String name){
+        return bunnies.values().stream().filter(b -> b.getName().equals(name)).findFirst().orElse(null);
     }
 }

@@ -15,11 +15,11 @@
 
 <main class="container">
 
-
-    <form th:action="@{/add}" th:object="${bunny}" method="post">
+    <form th:action="@{/addbunny}" th:object="${bunny}" method="get">
+<!--    <form th:action="@{/add}" th:object="${bunny}" method="post">-->
         <div class="mb-3">
             <label class="form-label" for="name">Nom:</label>
-            <input type="text" class="form-control"  id="name" th:field="*{name}">
+            <input type="text" class="form-control" id="name" th:field="*{name}">
         </div>
         <div class="mb-3">
             <label class="form-label"  for="breed">Race:</label>
