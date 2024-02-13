@@ -6,7 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.UUID;
@@ -57,5 +59,17 @@ public class DemoController {
         return "pageB"; // il y a 2 endpoints sur la même page, donc on met une condition sur la liste (voir pageB) afin que la liste s'affiche seulement quand on demande la liste
     }
 
-    
+    @GetMapping("/add")
+    public String addBunny(Model model){
+        model.addAttribute("bunny", new Bunny());
+        return "form/form";
+    }
+
+    @PostMapping("/add")
+    public String submitBunny(@ModelAttribute("bunny")Bunny bunny){
+        System.out.println(bunny.getName());
+        System.out.println(bunny.getBreed());
+        bunnyService.addBunny(bunny);
+        return "redirect:/";
+    }
 }
