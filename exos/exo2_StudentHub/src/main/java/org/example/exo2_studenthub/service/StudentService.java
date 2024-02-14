@@ -112,6 +112,6 @@ public class StudentService implements BaseService<Student>{
 
     @Override
     public Student getByName(String lastname) {
-        return students.values().stream().filter(s -> s.getLastname().equals(lastname)).findFirst().orElse(null);
+        return students.values().stream().filter(s -> s.getLastname().equalsIgnoreCase(lastname)).findFirst().orElse(null);
     }
 }

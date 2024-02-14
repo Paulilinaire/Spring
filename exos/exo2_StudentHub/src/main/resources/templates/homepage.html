@@ -29,11 +29,10 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
-                <form class="d-flex me-2" th:action="@{/search}" th:object="${student}" method="get">
-                    <input class="form-control me-2" type="search" placeholder="chercher étudiant" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Rechercher</button>
-                    <a class="btn btn-outline-light" th:href="@{/look(namestudent='')}">Rechercher</a>
-                </form>
+                    <form class="d-flex me-2" th:action="@{/look}" method="get">
+                        <input class="form-control me-2" type="search" th:name="namestudent" placeholder="chercher étudiant" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
                     <li class="nav-item mx-2">
                         <a class="nav-link text-dark h5" href="" target="blank"><i class="bi bi-person-circle me-2"></i>Deconnexion</a>
                     </li>
