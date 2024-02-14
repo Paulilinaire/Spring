@@ -1,6 +1,6 @@
-package com.example.demo_fragments.Service;
+package com.example.demo_form.Service;
 
-import com.example.demo_fragments.model.Bunny;
+import com.example.demo_form.model.Bunny;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -66,5 +66,14 @@ public class BunnyService {
 
     public Bunny getBunnyByName(String name){
         return bunnies.values().stream().filter(b -> b.getName().equals(name)).findFirst().orElse(null);
+    }
+
+    public boolean deleteBunny(UUID id) {
+        if(id != null && bunnies.containsKey(id)) {
+            bunnies.remove(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

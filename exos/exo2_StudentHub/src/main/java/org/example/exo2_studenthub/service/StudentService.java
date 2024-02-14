@@ -1,8 +1,6 @@
 package org.example.exo2_studenthub.service;
 
-import lombok.RequiredArgsConstructor;
 import org.example.exo2_studenthub.model.Student;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -123,6 +121,15 @@ public class StudentService implements BaseService<Student>{
         }
     }
 
+    @Override
+    public boolean update(UUID id, Student student) {
+        if(id != null && students.containsKey(id)) {
+            students.put(id, student);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
     @Override

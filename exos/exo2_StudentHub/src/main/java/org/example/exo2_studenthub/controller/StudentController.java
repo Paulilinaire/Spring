@@ -62,14 +62,28 @@ public class StudentController {
     @PostMapping("/add")
     public String submitStudent(@ModelAttribute("student") Student student){
         studentService.add(student);
-        return "redirect:students";
+        return "redirect:/students";
     }
 
 
-    @DeleteMapping(value = "/delete/{studentId}")
-    public String deleteById(@PathVariable("studentId") UUID studentId){
-        studentService.delete(studentId);
-        return "redirect:list";
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable(name = "id") UUID id, Model model) {
+        Student student = studentService.getById(id);
+        model.addAttribute("student", student);
+        return "updateuser";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateStudent(@PathVariable(name = "id") UUID id, Student student){
+        studentService.update(id, student);
+        return "redirect:/students";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteCourse(@PathVariable (name = "id") UUID id) {
+        studentService.delete(id);
+        return "redirect:/students";
     }
 
 

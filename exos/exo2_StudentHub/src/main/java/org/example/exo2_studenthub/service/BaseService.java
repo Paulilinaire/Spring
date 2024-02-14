@@ -11,6 +11,8 @@ public interface BaseService<T> {
     T getById(UUID id);
     boolean add(T element);
     boolean delete(UUID id);
+    boolean update(UUID id, Student student);
+
     List<Student> getByLastName(String lastname);
     List<Student> searchStudent(String search);
 }

@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example.exo2_studenthub.model.Student;
 import org.example.exo2_studenthub.service.BaseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,4 +25,15 @@ public class StudentRestController {
     public Student getStudentById(@PathVariable("id") UUID id){
         return studentService.getById(id);
     }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public boolean deleteById(@PathVariable UUID id){
+        return studentService.delete(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public boolean updateStudent(@PathVariable UUID id, Student student){
+        return studentService.update(id, student);
+    }
+
 }

@@ -1,10 +1,10 @@
-package com.example.demo_fragments;
+package com.example.demo_form;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoFragmentsApplicationTests {
+class DemoFormApplicationTests {
 
     @Test
     void contextLoads() {

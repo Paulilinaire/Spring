@@ -1,7 +1,7 @@
-package com.example.demo_fragments.controller;
+package com.example.demo_form.controller;
 
-import com.example.demo_fragments.Service.BunnyService;
-import com.example.demo_fragments.model.Bunny;
+import com.example.demo_form.Service.BunnyService;
+import com.example.demo_form.model.Bunny;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,4 +90,5 @@ public class DemoController {
             return "pageD";
         }
     }
+
 }

@@ -28,6 +28,10 @@
     <img th:src="@{/images/lapin.png}" alt="lapin">
 </header>
 
+<footer>
+    <p><span th:text="${@environment.getProperty('myapp.name')}"></span></p>
+    <p><span th:text="${@environment.getProperty('myapp.contact')}"></span></p>
+</footer>
 
 
 </body>

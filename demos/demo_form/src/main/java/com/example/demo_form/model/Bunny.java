@@ -1,4 +1,4 @@
-package com.example.demo_fragments.model;
+package com.example.demo_form.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
