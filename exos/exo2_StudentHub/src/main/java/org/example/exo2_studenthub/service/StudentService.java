@@ -1,6 +1,8 @@
 package org.example.exo2_studenthub.service;
 
+import lombok.RequiredArgsConstructor;
 import org.example.exo2_studenthub.model.Student;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 public class StudentService implements BaseService<Student>{
 
     private final Map<UUID, Student> students;
+
 
     public StudentService() {
         students = new HashMap<>();

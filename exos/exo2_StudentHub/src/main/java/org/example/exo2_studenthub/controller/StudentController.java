@@ -1,7 +1,9 @@
 package org.example.exo2_studenthub.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.example.exo2_studenthub.service.BaseService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +17,20 @@ public class StudentController {
 
     private final BaseService<Student> studentService;
 
+    @Value("${academy.name}")
+    private String academyName;
+
+    @Value("${academy.contact}")
+    private String academyContact;
+
     public StudentController(@Qualifier("student") BaseService<Student> studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping // http://localhost:8080
-    public String homePage() {
+    public String homePage(Model model) {
+        model.addAttribute("name", academyName);
+        model.addAttribute("contact", academyContact);
         return "homepage";
     }
 
@@ -55,18 +65,6 @@ public class StudentController {
         return "redirect:students";
     }
 
-
-//    @GetMapping("/look")
-//    public String showStudent(@RequestParam(value = "namestudent", required = false) String name, Model model){
-//        List<Student> students = studentService.searchStudent(name);
-//
-//        if(!students.isEmpty()){
-//            model.addAttribute("students", students);
-//            return "student/searchresult";
-//        } else {
-//            return "student/error";
-//        }
-//    }
 
     @DeleteMapping(value = "/delete/{studentId}")
     public String deleteById(@PathVariable("studentId") UUID studentId){
