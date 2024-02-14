@@ -59,15 +59,15 @@ public class StudentController {
 
     @GetMapping("/look")
     public String showStudent(@RequestParam(value = "namestudent", required = false) String name, Model model){
-        System.out.println(name);
-        Student student = studentService.getByName(name);
+        List<Student> students = studentService.getByLastNameIgnoreCase(name);
 
-        if(student != null){
-            model.addAttribute("student", student);
-            return "student/details";
+        if(!students.isEmpty()){
+            model.addAttribute("students", students);
+            return "student/searchresult";
         } else {
-            return "student/erreur";
+            return "student/error";
         }
     }
+
 
 }

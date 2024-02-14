@@ -15,7 +15,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-info p-3 mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand display-5 " th:href="@{/}"><i class="bi bi-journal-bookmark-fill me-1"></i>StudentHub</a>
+            <a class="navbar-brand " th:href="@{/}"><i class="bi bi-journal-bookmark-fill me-1"></i>StudentHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,7 +25,7 @@
                         <a class="nav-link mx-2" th:href="@{list}">Liste étudiants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2" th:href="@{/add}">Inscription</a>
+                        <a class="nav-link mx-2" th:href="@{/add}">Inscrire étudiant</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
@@ -41,6 +41,17 @@
         </div>
     </nav>
 </header>
+</th:block>
+
+<main class="container">
+    <img class="img-fluid" th:src="@{/images/students.jpg}" alt="students">
+</main>
+
+<th:block th:fragment="footer">
+<footer class="text-center p-4 mt-5" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+</footer>
 </th:block>
 
 </body>

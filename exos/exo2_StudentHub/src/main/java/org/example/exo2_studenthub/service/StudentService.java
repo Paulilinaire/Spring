@@ -1,6 +1,5 @@
 package org.example.exo2_studenthub.service;
 
-import lombok.Setter;
 import org.example.exo2_studenthub.model.Student;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service("student")
 public class StudentService implements BaseService<Student>{
@@ -110,8 +110,13 @@ public class StudentService implements BaseService<Student>{
         }
     }
 
+
     @Override
-    public Student getByName(String lastname) {
-        return students.values().stream().filter(s -> s.getLastname().equalsIgnoreCase(lastname)).findFirst().orElse(null);
+    public List<Student> getByLastNameIgnoreCase(String lastname) {
+        return students.values()
+                .stream()
+                .filter(s -> s.getLastname().equalsIgnoreCase(lastname))
+                .collect(Collectors.toList());
     }
+
 }

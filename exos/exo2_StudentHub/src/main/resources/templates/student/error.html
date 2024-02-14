@@ -9,8 +9,11 @@
 <body>
 
 <div class="container mt-5 text-danger">
-    <h2><i class="bi bi-ban"></i>Oups, cet étudiant n'existe pas !</h2>
+    <div class="text-center mt-3">
+    <h3><i class="bi bi-ban me-1"></i>Oups, aucun étudiant n'a été trouvé !</h3>
+        <a class="btn btn-dark mt-5" th:href="@{/list}"><i class="bi bi-arrow-left me-1"></i>Retour</a>
+    </div>
 </div>
-
+<span th:replace="~{homepage :: footer}"></span>
 </body>
 </html>
