@@ -10,21 +10,21 @@
 
 <main class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div th:object="${student}" class="col-md-6">
             <div class="card bg-info mb-3 border border-info">
                 <div class="card-body text-white">
-                    <h5 class="card-title">Student Details</h5>
-                    <h6 class="card-subtitle mb-2">
-                        <span th:text="${student.lastname}"></span>,
-                        <span th:text="${student.firstname}"></span>
-                    </h6>
+                    <h3 class="card-title">Student Details</h3>
+                    <h5 class="card-subtitle mb-2">
+                        <span th:text="*{lastname}"></span>,
+                        <span th:text="*{firstname}"></span>
+                    </h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Age: <span th:text="${student.age}"></span></li>
-                        <li class="list-group-item">Email: <span th:text="${student.email}"></span></li>
-                        <li class="list-group-item">Phone: <span th:text="${student.phone}"></span></li>
+                        <li class="list-group-item">Age: <span th:text="*{age}"> ans</span></li>
+                        <li class="list-group-item">Email: <span th:text="*{email}"></span></li>
+                        <li class="list-group-item">Phone: <span th:text="*{phone}"></span></li>
                     </ul>
                     <div class="text-center mt-3">
-                        <a class="btn btn-dark" th:href="@{/list}"><i class="bi bi-arrow-left me-1"></i>Retour</a>
+                        <a class="btn btn-dark" th:href="@{/students}"><i class="bi bi-arrow-left me-1"></i>Retour</a>
                     </div>
                 </div>
             </div>

@@ -95,8 +95,8 @@ public class StudentService implements BaseService<Student>{
     }
 
     @Override
-    public Student getByID(UUID id) {
-        return students.get(id);
+    public Student getById(UUID id) {
+        return students.values().stream().filter(student -> student.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
@@ -110,9 +110,20 @@ public class StudentService implements BaseService<Student>{
         }
     }
 
+    @Override
+    public boolean delete(UUID id) {
+        if(id != null && students.containsKey(id)) {
+            students.remove(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
     @Override
-    public List<Student> getByLastNameIgnoreCase(String lastname) {
+    public List<Student> getByLastName(String lastname) {
         return students.values()
                 .stream()
                 .filter(s -> s.getLastname().equalsIgnoreCase(lastname))
@@ -120,15 +131,16 @@ public class StudentService implements BaseService<Student>{
     }
 
     @Override
-    public List<Student> getByLastNameAndFirstNameIgnoreCase(String search) {
+    public List<Student> searchStudent(String search) {
         String searchLower = search.toLowerCase();
 
-        return students.values()
+        return students
+                .values()
                 .stream()
-                .filter(s ->
-                        s.getLastname().toLowerCase().contains(searchLower) ||
-                                s.getFirstname().toLowerCase().contains(searchLower))
-                .collect(Collectors.toList());
+                .filter(student ->
+                        student.getLastname().toLowerCase().contains(searchLower) ||
+                                student.getFirstname().toLowerCase().contains(searchLower))
+                .toList();
     }
 
 

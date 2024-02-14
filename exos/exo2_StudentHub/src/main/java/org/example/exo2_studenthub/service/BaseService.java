@@ -8,9 +8,9 @@ import java.util.UUID;
 public interface BaseService<T> {
 
     List<T> getAll();
-    T getByID(UUID id);
+    T getById(UUID id);
     boolean add(T element);
-    List<Student> getByLastNameIgnoreCase(String lastname);
-
-    List<Student> getByLastNameAndFirstNameIgnoreCase(String search);
+    boolean delete(UUID id);
+    List<Student> getByLastName(String lastname);
+    List<Student> searchStudent(String search);
 }

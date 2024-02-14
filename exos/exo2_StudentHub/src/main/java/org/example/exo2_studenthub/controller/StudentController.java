@@ -19,27 +19,26 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping // http://localhost:8080
     public String homePage() {
         return "homepage";
     }
 
 
-    @GetMapping("/list")
-    public String listingStudents(Model model){
-        List<Student> students = studentService.getAll();
-        Student student = students.get(0);
-        model.addAttribute("idStudent",student.getId());
-
-        model.addAttribute("students",students);
+    @GetMapping("/students")
+    public String listingStudents(@RequestParam(name = "search", required = false) String search, Model model){
+        if (search == null){
+            model.addAttribute("students", studentService.getAll());
+        } else {
+            model.addAttribute("students", studentService.searchStudent(search));
+        }
         return "student/list";
     }
 
 
-    @GetMapping("/detail/{studentId}")
-    public String detailStudent(@PathVariable("studentId") UUID id, Model model){
-        Student student = studentService.getByID(id);
-        model.addAttribute("student",student);
+    @GetMapping("/details/{id}")
+    public String detailStudent(@PathVariable("id") UUID id, Model model){
+        model.addAttribute("student", studentService.getById(id));
         return "student/details";
     }
 
@@ -47,26 +46,32 @@ public class StudentController {
     @GetMapping("/add")
     public String addStudent(Model model){
         model.addAttribute("student",new Student());
-
         return "addstudent";
     }
 
     @PostMapping("/add")
     public String submitStudent(@ModelAttribute("student") Student student){
         studentService.add(student);
-        return "redirect:list";
+        return "redirect:students";
     }
 
-    @GetMapping("/look")
-    public String showStudent(@RequestParam(value = "namestudent", required = false) String name, Model model){
-        List<Student> students = studentService.getByLastNameAndFirstNameIgnoreCase(name);
 
-        if(!students.isEmpty()){
-            model.addAttribute("students", students);
-            return "student/searchresult";
-        } else {
-            return "student/error";
-        }
+//    @GetMapping("/look")
+//    public String showStudent(@RequestParam(value = "namestudent", required = false) String name, Model model){
+//        List<Student> students = studentService.searchStudent(name);
+//
+//        if(!students.isEmpty()){
+//            model.addAttribute("students", students);
+//            return "student/searchresult";
+//        } else {
+//            return "student/error";
+//        }
+//    }
+
+    @DeleteMapping(value = "/delete/{studentId}")
+    public String deleteById(@PathVariable("studentId") UUID studentId){
+        studentService.delete(studentId);
+        return "redirect:list";
     }
 
 
