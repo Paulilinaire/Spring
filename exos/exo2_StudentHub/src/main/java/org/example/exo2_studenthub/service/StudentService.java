@@ -119,4 +119,18 @@ public class StudentService implements BaseService<Student>{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Student> getByLastNameAndFirstNameIgnoreCase(String search) {
+        String searchLower = search.toLowerCase();
+
+        return students.values()
+                .stream()
+                .filter(s ->
+                        s.getLastname().toLowerCase().contains(searchLower) ||
+                                s.getFirstname().toLowerCase().contains(searchLower))
+                .collect(Collectors.toList());
+    }
+
+
+
 }

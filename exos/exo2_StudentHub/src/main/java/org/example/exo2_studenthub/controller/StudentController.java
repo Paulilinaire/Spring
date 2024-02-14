@@ -59,7 +59,7 @@ public class StudentController {
 
     @GetMapping("/look")
     public String showStudent(@RequestParam(value = "namestudent", required = false) String name, Model model){
-        List<Student> students = studentService.getByLastNameIgnoreCase(name);
+        List<Student> students = studentService.getByLastNameAndFirstNameIgnoreCase(name);
 
         if(!students.isEmpty()){
             model.addAttribute("students", students);

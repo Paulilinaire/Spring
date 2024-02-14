@@ -11,4 +11,6 @@ public interface BaseService<T> {
     T getByID(UUID id);
     boolean add(T element);
     List<Student> getByLastNameIgnoreCase(String lastname);
+
+    List<Student> getByLastNameAndFirstNameIgnoreCase(String search);
 }
