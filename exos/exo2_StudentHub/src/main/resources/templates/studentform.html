@@ -2,7 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Student</title>
+    <title>
+        <span th:if="${student.id == null}">Add</span>
+        <span th:if="${student.id != null}">Update</span>
+        Student
+    </title>
     <span th:replace="~{homepage :: bootstrapImports}"></span>
     <span th:replace="~{homepage :: header}"></span>
 </head>
@@ -11,7 +15,11 @@
 <main class="container mt-5">
     <div class="row justify-content-md-center">
         <div class="col-8">
-            <h2 class="mb-5 display-5 text-center">Inscription étudiant</h2>
+            <h2 class="mb-5 display-5 text-center">
+                <span th:if="${student.id == null}">Inscription</span>
+                <span th:if="${student.id != null}">Mettre à jour</span>
+                étudiant
+            </h2>
         </div>
     </div>
     <div>
@@ -19,19 +27,19 @@
             <div class="col-8">
                 <div class="bg-white border rounded shadow-sm overflow-hidden">
 
-                    <form th:action="@{/add}" th:object="${student}" method="post">
+                    <form th:action="@{${student.id == null} ? '/add' : '/update/' + ${student.id}}" th:object="${student}" method="post">
                         <div class="row p-4">
                             <div class="col-4 mb-3">
                                 <label for="lastname" class="form-label">Nom:</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" value="">
+                                <input type="text" th:field="*{lastname}" class="form-control" id="lastname" placeholder="Nom" required>
                             </div>
                             <div class="col-4 mb-3">
                                 <label for="firstname" class="form-label">Prénom:</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" value="">
+                                <input type="text" th:field="*{firstname}" class="form-control" id="firstname" placeholder="Prénom" required>
                             </div>
                             <div class="col-4 mb-3">
                                 <label for="age" class="form-label">Age:</label>
-                                <input type="number" class="form-control" id="age" name="age" value="">
+                                <input type="number" th:field="*{age}" class="form-control" id="age" placeholder="Age">
                             </div>
                             <div class="col-6 mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -41,7 +49,7 @@
                                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                                         </svg>
                                     </span>
-                                    <input type="email" class="form-control" id="email" name="email" value="" required>
+                                    <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
@@ -52,17 +60,22 @@
                                             <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                                         </svg>
                                     </span>
-                                    <input type="tel" class="form-control" id="phone" name="phone" value="">
+                                    <input type="tel" th:field="*{phone}" class="form-control" id="phone" placeholder="Numéro de téléphone">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <div class="d-grid mt-3">
-                                    <button class="btn btn-outline-info btn-lg" type="submit">Soumettre</button>
+                                    <button class="btn btn-outline-info btn-lg" type="submit">
+                                        <span th:if="${student.id == null}">Soumettre</span>
+                                        <span th:if="${student.id != null}">Mettre à jour</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </form>
-
+                </div>
+                <div class="text-end mt-3">
+                    <a class="btn btn-dark" th:href="@{/students}"><i class="bi bi-arrow-left me-1"></i>Retour</a>
                 </div>
             </div>
         </div>

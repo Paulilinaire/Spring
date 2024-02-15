@@ -54,7 +54,7 @@ public class StudentController {
     @GetMapping("/add")
     public String addStudent(Model model){
         model.addAttribute("student",new Student());
-        return "addstudent";
+        return "studentform";
     }
 
     @PostMapping("/add")
@@ -68,7 +68,7 @@ public class StudentController {
     public String showUpdateForm(@PathVariable(name = "id") UUID id, Model model) {
         Student student = studentService.getById(id);
         model.addAttribute("student", student);
-        return "updatestudent";
+        return "studentform";
     }
 
 
