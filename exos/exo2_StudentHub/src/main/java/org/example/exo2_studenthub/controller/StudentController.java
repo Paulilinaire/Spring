@@ -1,6 +1,5 @@
 package org.example.exo2_studenthub.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.example.exo2_studenthub.service.BaseService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.example.exo2_studenthub.model.Student;
 
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -70,8 +68,9 @@ public class StudentController {
     public String showUpdateForm(@PathVariable(name = "id") UUID id, Model model) {
         Student student = studentService.getById(id);
         model.addAttribute("student", student);
-        return "updateuser";
+        return "updatestudent";
     }
+
 
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable(name = "id") UUID id, Student student){

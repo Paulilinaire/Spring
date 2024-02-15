@@ -19,7 +19,7 @@
             <div class="col-8">
                 <div class="bg-white border rounded shadow-sm overflow-hidden">
 
-                    <form th:action="@{/update/{id}(id=${s.id})}" th:object="${student}" method="post">
+                    <form th:action="@{/update/{id}(id=${student.id})}" th:object="${student}" method="post">
                         <div class="row p-4">
                             <div class="col-4 mb-3">
                                 <label for="lastname" class="form-label">Nom:</label>
