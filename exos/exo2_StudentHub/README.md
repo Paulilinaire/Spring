@@ -2,19 +2,14 @@
 
 Application de gestion d'étudiants 
 
+-Méthode CRUD en restcontroller et controller
 -Simulation d'une base de donnée dans le StudentService 
--Méthode Get et Post dans le StudentController
 
-![alt text](localhost_8080.png)
 
-![alt text](localhost_8080_students-1.png)
-
-![alt text](<localhost_8080_detail_7f3a9ca9-fa6d-4eb7-a1b4-7b2ec8f70c99 (1).png>) 
-
-![alt text](<localhost_8080_look_namestudent=jones (1).png>) 
-
-![alt text](localhost_8080_add.png) 
-
-![alt text](localhost_8080_look_namestudent=so.png)
-
-![alt text](localhost_8080_edit_faace255-3e4b-435d-9cc3-69e2d4d70a19-1.png)
+![Screenshot 1](screenshots/localhost_8080.png)
+![Screenshot 2](screenshots/localhost_8080_students-1.png)
+![Screenshot 3](screenshots/localhost_8080_detail_7f3a9ca9-fa6d-4eb7-a1b4-7b2ec8f70c99 (1).png)
+![Screenshot 4](screenshots/localhost_8080_look_namestudent=jones (1).png)
+![Screenshot 5](screenshots/localhost_8080_add (1).png)
+![Screenshot 6](screenshots/localhost_8080_look_namestudent=so.png)
+![Screenshot 7](screenshots/localhost_8080_edit_faace255-3e4b-435d-9cc3-69e2d4d70a19-1.png)
