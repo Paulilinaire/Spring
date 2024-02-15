@@ -5,7 +5,7 @@ Application de gestion d'étudiants
 -Simulation d'une base de donnée dans le StudentService 
 -Méthode Get et Post dans le StudentController
 
-![alt text](localhost_8080-1.png) 
+![alt text](localhost_8080.png)
 
 ![alt text](localhost_8080_list.png) 
 
