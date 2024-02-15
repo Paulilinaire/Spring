@@ -7,7 +7,7 @@ Application de gestion d'étudiants
 
 ![alt text](localhost_8080.png)
 
-![alt text](localhost_8080_list.png) 
+![alt text](localhost_8080_students-1.png)
 
 ![alt text](<localhost_8080_detail_7f3a9ca9-fa6d-4eb7-a1b4-7b2ec8f70c99 (1).png>) 
 
@@ -16,3 +16,6 @@ Application de gestion d'étudiants
 ![alt text](localhost_8080_add.png) 
 
 ![alt text](localhost_8080_look_namestudent=so.png)
+
+![alt text](localhost_8080_edit_faace255-3e4b-435d-9cc3-69e2d4d70a19-1.png)
+
