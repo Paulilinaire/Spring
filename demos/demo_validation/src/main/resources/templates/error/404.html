@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404</title>
+</head>
+<body>
+
+<h1>Oups, pas trouvé !</h1>
+
+<p>Pas de page trouvé pour le chemin: <span th:text="${path}"></span></p>
+<p>Le statut est: <span th:text="${status}"></span></p>
+<p>Le code erreur est: <span th:text="${error}"></span></p>
+<p>Le message: <span th:text="${message}"></span></p>
+
+</body>
+</html>

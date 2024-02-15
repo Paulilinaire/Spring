@@ -1,10 +1,12 @@
 package org.example.exo2_studenthub.controller;
 
+import jakarta.validation.Valid;
 import org.example.exo2_studenthub.service.BaseService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.example.exo2_studenthub.model.Student;
 
@@ -54,11 +56,14 @@ public class StudentController {
     @GetMapping("/add")
     public String addStudent(Model model){
         model.addAttribute("student",new Student());
-        return "studentform";
+        return "student-form";
     }
 
     @PostMapping("/add")
-    public String submitStudent(@ModelAttribute("student") Student student){
+    public String submitStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "student-form";
+        }
         studentService.add(student);
         return "redirect:/students";
     }
@@ -68,12 +73,15 @@ public class StudentController {
     public String showUpdateForm(@PathVariable(name = "id") UUID id, Model model) {
         Student student = studentService.getById(id);
         model.addAttribute("student", student);
-        return "studentform";
+        return "student-form";
     }
 
 
     @PostMapping("/update/{id}")
-    public String updateStudent(@PathVariable(name = "id") UUID id, Student student){
+    public String updateStudent(@PathVariable(name = "id") UUID id, @Valid @ModelAttribute("student") Student student, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) {
+            return "student-form";
+        }
         studentService.update(id, student);
         return "redirect:/students";
     }
