@@ -18,4 +18,3 @@ Application de gestion d'étudiants
 ![alt text](localhost_8080_look_namestudent=so.png)
 
 ![alt text](localhost_8080_edit_faace255-3e4b-435d-9cc3-69e2d4d70a19-1.png)
-
