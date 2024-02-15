@@ -2,7 +2,7 @@
 
 Application de gestion d'étudiants 
 
--Méthode CRUD en restcontroller et controller
+-Méthode CRUD en restcontroller et controller  
 -Simulation d'une base de donnée dans le StudentService 
 
 
@@ -12,4 +12,4 @@ Application de gestion d'étudiants
 ![Screenshot4](screenshots/localhost_8080_look_namestudent=jones%20(1).png)
 ![Screenshot5](screenshots/localhost_8080_look_namestudent=so.png)
 ![Screenshot6](screenshots/localhost_8080_add%20(1).png)
-![Screenshot7](screenshots/localhost_8080_edit_faace255-3e4b-435d-9cc3-69e2d4d70a19-1.png)
+![Screenshot7](screenshots/localhost_8080_edit_672ff0b3-2a1d-4635-808e-a448e0220920.png)
