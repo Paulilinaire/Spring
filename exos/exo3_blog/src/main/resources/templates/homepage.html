@@ -26,17 +26,10 @@
                     <div>
                         <img class="size-20" th:src="@{/images/logo1.png}" alt="logo">
                     </div>
-                    <div>
-                        <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
-                            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                                <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
-                            </svg>
-                        </button>
-                    </div>
                 </div>
                 <div class="flex flex-col md:flex-row md:-mx-4">
                     <form class="my-1 md:mx-4 md:my-0 flex items-center" th:action="@{/}" method="get">
-                        <input class="rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">
+                        <input class="bg-gray-100 rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">
                         <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-r-md">
                             <i class="bi bi-search"></i>
                         </button>
@@ -54,33 +47,36 @@
             <div class="w-full">
                 <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                 <div class="flex items-center justify-between flex-wrap">
+
                     <div th:unless="${posts.isEmpty()}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div th:each="p : ${posts}" class="mb-4">
-                            <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
-                                <div class="flex justify-between items-center">
-                                    <span class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded" th:text="${p.date}"></span>
-                                </div>
-                                <div class="mt-2">
-                                    <a th:href="@{/post/{id}(id=${p.id})}" class="text-2xl text-gray-700 font-bold hover:underline" th:text="${p.title}"></a>
-                                    <p class="mt-2 text-gray-600" th:text="${p.description}"></p>
-                                </div>
-                                <div class="flex justify-between items-center mt-4">
-                                    <a th:href="@{/post/{id}(id=${p.id})}" class="text-pink-500 hover:underline ml-auto">Read more</a>
+                            <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md h-full">
+                                <div class="flex flex-col justify-between items-left h-full">
+                                    <div class="flex justify-between items-center">
+                                        <span class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded" th:text="${p.date}"></span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <a th:href="@{/post/{id}(id=${p.id})}" class="text-2xl text-gray-700 font-bold hover:underline" th:text="${p.title}"></a>
+                                        <p class="mt-2 text-gray-600" th:text="${p.description}"></p>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <a th:href="@{/post/{id}(id=${p.id})}" class="text-pink-500 hover:underline ml-auto">Read more</a>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    </div>
+
                     <div class="flex items-center justify-center mx-auto">
                         <div th:if="${posts.isEmpty()}" class="flex flex-col items-center justify-center text-purple-700 mt-3">
                             <h3 class="mb-4"><i class="bi bi-ban me-1"></i>Sorry, post not found!</h3>
-                            <a th:href="@{/}" type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l
+                            <a th:href="@{/}" type="button" class="text-white font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l
                                 focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800
-                                font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2">
+                                rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2">
                                 <i class="bi bi-arrow-left me-2"></i>Back
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

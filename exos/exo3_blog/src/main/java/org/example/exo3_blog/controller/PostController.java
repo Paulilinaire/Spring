@@ -38,7 +38,7 @@ public class PostController {
     }
 
     @PostMapping("/post/{id}/add-comment")
-    public String addCommentToPost(@PathVariable UUID id, @ModelAttribute @Valid Comment comment, BindingResult result, Model model) {
+    public String addCommentToPost(@Valid @ModelAttribute Comment comment, UUID id, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("postId", id);
             model.addAttribute("comment", comment);
