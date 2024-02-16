@@ -18,40 +18,34 @@ public class PostController {
 
     private final BaseService<Post> postService;
 
-    @GetMapping String homePage(@RequestParam(name = "search",required = false) String search, Model model){
-        if(search == null){
+    @GetMapping("/")
+    public String homePage(@RequestParam(name = "search", required = false) String search, Model model) {
+        if (search == null) {
             model.addAttribute("posts", postService.getAll());
         } else {
+            System.out.println(search);
             model.addAttribute("posts", postService.search(search));
         }
         return "homepage";
     }
 
-    @GetMapping("/post/{id}")  // http://localhost:8080/post/x
-    public String showPost(@PathVariable UUID id, Model model){
-        model.addAttribute("post",postService.getById(id));
+    @GetMapping("/post/{id}")
+    public String showPost(@PathVariable UUID id, Model model) {
+        Post post = postService.getById(id);
+        model.addAttribute("post", post);
+        model.addAttribute("comment", new Comment());
         return "post/post-content";
     }
 
-
-    @GetMapping("/post/{id}/add-comment")
-    public String showAddCommentForm(@PathVariable UUID id, Model model) {
-        model.addAttribute("postId", id);
-        model.addAttribute("comment", new Comment());
-        return "comment/add-comment-form";
-    }
-
-
     @PostMapping("/post/{id}/add-comment")
     public String addCommentToPost(@PathVariable UUID id, @ModelAttribute @Valid Comment comment, BindingResult result, Model model) {
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             model.addAttribute("postId", id);
-            return "comment/add-comment-form";
-        }else {
+            model.addAttribute("comment", comment);
+            return "post/post-content";
+        } else {
             postService.addCommentToPost(id, comment);
-            return "redirect:/post/post-content";
+            return "redirect:/post/" + id;
         }
     }
-
-
 }

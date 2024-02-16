@@ -3,84 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <th:block th:fragment="bootstrapImports">
+    <th:block th:fragment="styleImports">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/thymeleaf@0.22.0/lib/thymeleaf.browser.cjs.min.js"></script>
     </th:block>
 </head>
 <body>
 
+
 <header>
     <th:block th:fragment="navbar">
-        <nav class="navbar navbar-expand-lg  navbar-light">
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <i class="bi bi-bars"></i>
-            </button>
-            <div class="container d-flex justify-content-center">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center mb-3">
-                        <img class="logo" th:src="@{/images/logo.jpg}" alt="logo">
+        <nav class="bg-white px-6 py-4 shadow">
+            <div class="flex flex-col container mx-auto md:flex-row md:items-center md:justify-between">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <a class="text-gray-800 text-xl font-bold md:text-2xl" th:href="@{/}"><span class="text-purple-500">My</span>Blog</a>
                     </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center mx-auto">
-                                <li class="nav-item">
-                                    <form class="d-flex me-2" th:action="@{/posts}" method="get">
-                                        <input class="form-control me-2" type="search" th:name="search" placeholder="search post" aria-label="Search">
-                                        <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
+                    <div>
+                        <img class="size-20" th:src="@{/images/logo1.png}" alt="logo">
                     </div>
+                    <div>
+                        <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
+                            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:-mx-4">
+                    <form class="my-1 md:mx-4 md:my-0 flex items-center" th:action="@{/}" method="get">
+                        <input class="rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">
+                        <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-r-md">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </nav>
     </th:block>
 </header>
 
-<main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div th:unless="${posts.isEmpty()}" class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-                <div th:each="p : ${posts}" class="col mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${p.title}"></h5>
-                            <p class="card-text" th:text="${p.description}"></p>
-                        </div>
-                        <div class="card-footer">
-                            <a th:href="@{/post/{id}(id=${p.id})}" class="btn btn-outline-warning">
-                                See more...
+
+<main class="container mx-auto">
+    <div class="px-6 py-8">
+        <div class="flex justify-between container mx-auto">
+            <div class="w-full">
+                <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
+                <div class="flex items-center justify-between flex-wrap">
+                    <div th:unless="${posts.isEmpty()}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div th:each="p : ${posts}" class="mb-4">
+                            <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
+                                <div class="flex justify-between items-center">
+                                    <span class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded" th:text="${p.date}"></span>
+                                </div>
+                                <div class="mt-2">
+                                    <a th:href="@{/post/{id}(id=${p.id})}" class="text-2xl text-gray-700 font-bold hover:underline" th:text="${p.title}"></a>
+                                    <p class="mt-2 text-gray-600" th:text="${p.description}"></p>
+                                </div>
+                                <div class="flex justify-between items-center mt-4">
+                                    <a th:href="@{/post/{id}(id=${p.id})}" class="text-pink-500 hover:underline ml-auto">Read more</a>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="flex items-center justify-center mx-auto">
+                        <div th:if="${posts.isEmpty()}" class="flex flex-col items-center justify-center text-purple-700 mt-3">
+                            <h3 class="mb-4"><i class="bi bi-ban me-1"></i>Sorry, post not found!</h3>
+                            <a th:href="@{/}" type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l
+                                focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800
+                                font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2">
+                                <i class="bi bi-arrow-left me-2"></i>Back
                             </a>
                         </div>
                     </div>
+
                 </div>
-            </div>
-            <div th:if="${posts.isEmpty()}" class="text-center text-danger mt-3">
-                <h3><i class="bi bi-ban me-1"></i>Post not found !</h3>
-                <a class="btn btn-dark mt-5" th:href="@{/posts}"><i class="bi bi-arrow-left"></i>Back</a>
             </div>
         </div>
     </div>
 </main>
 
 <th:block th:fragment="footer">
-    <footer class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2024 Copyright:
-        <a class="text-reset fw-bold" href="https://bootstrap.com/">Bootstrap.com</a>
+    <footer class="mx-auto mt-32 w-full max-w-container px-4 sm:px-6 lg:px-8 bg-gray-100">
+        <div class="border-t border-gray-300 py-10 text-center">
+            <p class="text-gray-500">&copy; <!-- -->2024<!-- --> Tailwind Labs Inc. All rights reserved.</p>
+        </div>
     </footer>
 </th:block>
-
 </body>
+
 </html>

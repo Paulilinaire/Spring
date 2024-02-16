@@ -33,6 +33,15 @@ public class Post {
     @NotBlank
     private String content;
 
+    @NotBlank
+    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Date format should be YYYY-MM-dd")
+    private LocalDate date;
+
+    @NotBlank
+    @Size(min = 3)
+    @Pattern(regexp = "^[A-Z][a-z]*$", message = "La première lettre doit être une majuscule")
+    private String authorPseudo;
+
     private List<Comment> commentList;
 
 }
