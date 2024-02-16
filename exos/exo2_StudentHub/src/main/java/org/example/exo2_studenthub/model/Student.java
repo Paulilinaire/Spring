@@ -18,19 +18,19 @@ public class Student {
 
     @NotBlank
     @Size(min=3, message = "3 lettres minimum")
-    @Pattern(regexp = "^[A-Z][a-z]*$") // first letter in capital letter
+    @Pattern(regexp = "^[A-Z][a-z]*$", message = "La première lettre doit être une majuscule")
     private String lastname;
 
     @NotBlank
     @Size(min=3, message = "3 lettres minimum")
-    @Pattern(regexp = "^[A-Z][a-z]*$")
+    @Pattern(regexp = "^[A-Z][a-z]*$", message = "La première lettre doit être une majuscule")
     private String firstname;
 
     @Min(16)
     @Max(60)
     private Integer age;
 
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "L'adresse doit être au format email name@example.com")
     private String email;
 
     @Size(min=10, max=15)

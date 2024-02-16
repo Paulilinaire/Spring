@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Content</title>
+    <span th:replace="~{homepage :: bootstrapImports}"></span>
+    <span th:replace="~{homepage :: navbar}"></span>
+</head>
+<body>
+
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div th:object="${post}" class="col-md-6">
+            <div class="card bg-info mb-3 border border-info">
+                <div class="card-body">
+                    <h3 class="card-title"><span th:text="*{title}"></span>,</h3>
+                    <h5 class="card-subtitle mb-2">
+                        <span th:text="*{description}"></span>
+                    </h5>
+                    <p><span th:text="*{content}"></span></p>
+                    <div class="text-center mt-3">
+                        <a class="btn btn-dark" th:href="@{/homepage}"><i class="bi bi-arrow-left me-1"></i>Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<span th:replace="~{homepage :: footer}"></span>
+</body>
+</html>
