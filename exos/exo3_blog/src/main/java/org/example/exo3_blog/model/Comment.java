@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Data
@@ -29,5 +31,9 @@ public class Comment {
     @NotBlank
     @Size(min = 3, max = 300)
     private String content;
+
+    private LocalDate date;
+
+    private LocalTime time;
 
 }

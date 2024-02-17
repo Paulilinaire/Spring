@@ -43,6 +43,8 @@ public class Post {
     @Pattern(regexp = "^[A-Z][a-z]*$", message = "La première lettre doit être une majuscule")
     private String authorPseudo;
 
+    private String imageUrl;
+
     private List<Comment> commentList = new ArrayList<>();
 
 }

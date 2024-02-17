@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Controller
@@ -33,7 +35,7 @@ public class PostController {
     public String showPost(@PathVariable UUID id, Model model) {
         Post post = postService.getById(id);
         model.addAttribute("post", post);
-        model.addAttribute("comment", new Comment());
+        model.addAttribute("comment",  new Comment());
         return "post/post-content";
     }
 
@@ -44,6 +46,8 @@ public class PostController {
             model.addAttribute("comment", comment);
             return "post/post-content";
         } else {
+            comment.setDate(LocalDate.now());
+            comment.setTime(LocalTime.now());
             postService.addCommentToPost(id, comment);
             return "redirect:/post/" + id;
         }
