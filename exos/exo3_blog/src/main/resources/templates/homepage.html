@@ -17,28 +17,28 @@
 
 <header>
     <th:block th:fragment="navbar">
-        <nav class="bg-white-200 px-6 py-4 shadow">
+        <nav class="bg-gray-800 px-6 py-4 shadow">
             <div class="flex flex-col container mx-auto md:flex-row md:items-center md:justify-between">
                 <div class="flex justify-between items-center">
                     <div>
-                        <a class="text-gray-800 text-xl font-bold md:text-2xl" th:href="@{/}"><span class="text-purple-500">My</span>Blog</a>
+                        <a class="text-white text-xl font-bold md:text-2xl" th:href="@{/}"><span class="text-purple-500">My</span>Blog</a>
                     </div>
                     <div>
                         <img class="size-20" th:src="@{/images/logo1.png}" alt="logo">
                     </div>
                 </div>
                 <div class="flex justify-end items-center md:-mx-4">
-                    <a class="my-1 text-gray-800 hover:text-green-500 md:mx-4 md:my-0" th:href="@{/}">
+                    <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0" th:href="@{/}">
                         <i class="bi bi-house-heart-fill"></i>
                     </a>
-                    <a class="my-1 text-gray-800 hover:text-green-500 md:mx-4 md:my-0" href="#">
+                    <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0" href="#">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a class="my-1 text-gray-800 hover:text-green-500 md:mx-4 md:my-0 me-5" href="#">
+                    <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0 me-5" href="#">
                         <i class="bi bi-person-fill"></i>
                     </a>
-                    <form class="my-1 flex items-center" th:action="@{/}" method="get">
-                        <input class="bg-gray-100 rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">
+                    <form class="my-1 flex items-center bg-gray-800" th:action="@{/}" method="get">
+                        <input class="text-white bg-gray-600 rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">
                         <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-r-md">
                             <i class="bi bi-search"></i>
                         </button>
@@ -93,7 +93,7 @@
 </main>
 
 <th:block th:fragment="footer">
-    <footer class="mx-auto mt-32 w-full max-w-container px-4 sm:px-6 lg:px-8 bg-gray-100">
+    <footer class="mx-auto mt-32 w-full max-w-container px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div class="border-t border-gray-300 py-10 text-center">
             <p class="text-gray-500">&copy; <!-- -->2024<!-- --> Tailwind Labs Inc. All rights reserved.</p>
         </div>

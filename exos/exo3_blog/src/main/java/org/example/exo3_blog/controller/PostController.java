@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Controller
@@ -47,7 +48,8 @@ public class PostController {
             return "post/post-content";
         } else {
             comment.setDate(LocalDate.now());
-            comment.setTime(LocalTime.now());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            comment.setTime(LocalTime.parse(LocalTime.now().format(formatter)));
             postService.addCommentToPost(id, comment);
             return "redirect:/post/" + id;
         }
