@@ -162,11 +162,6 @@ import java.util.UUID;
                     .toList();
         }
 
-        @Override
-        public List<Comment> getCommentsForPost(UUID postId) {
-            Post post = posts.get(postId);
-            return (post != null) ? post.getCommentList() : new ArrayList<>();
-        }
 
         @Override
         public boolean addCommentToPost(UUID postId, Comment comment) {

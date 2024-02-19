@@ -1,7 +1,11 @@
-package com.example.demo.entity;
+package com.example.demo_h2database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Date;
+import java.util.Locale;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,7 +20,7 @@ public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,8 +28,8 @@ public class Cat {
     @Column(name = "color")
     private String color;
 
-    @Column(name = "breed")
-    private String breed;
+    @Column(name = "birth_date")
+    private Date birthDate;
 
 
 }

@@ -12,7 +12,6 @@ public interface BaseService<T> {
     boolean create(T element);
     List<T> search(String search);
 
-    List<Comment> getCommentsForPost(UUID postId);
     boolean addCommentToPost(UUID postId, Comment comment);
 
 }
