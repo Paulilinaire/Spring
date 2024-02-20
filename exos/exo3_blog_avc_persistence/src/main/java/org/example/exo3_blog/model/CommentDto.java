@@ -1,40 +1,39 @@
-package org.example.exo3_blog.entity;
+package org.example.exo3_blog.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.example.exo3_blog.entity.Post;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.UUID;
 
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "comment")
-public class Comment {
+public class CommentDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_comment", nullable = false)
     private UUID id;
 
+    @NotBlank
+    @Size(min = 3)
     private String username;
 
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "L'adresse doit être au format email name@example.com")
     private String email;
 
+    @NotBlank
+    @Size(min = 3, max = 300)
     private String content;
 
     private LocalDate date;
 
     private LocalTime time;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
     private Post post;
 
     public UUID getId() {

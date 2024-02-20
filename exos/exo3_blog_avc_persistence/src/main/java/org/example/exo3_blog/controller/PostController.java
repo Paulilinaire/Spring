@@ -1,9 +1,9 @@
 package org.example.exo3_blog.controller;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.example.exo3_blog.entity.Comment;
 import org.example.exo3_blog.entity.Post;
+import org.example.exo3_blog.model.PostDto;
 import org.example.exo3_blog.service.BaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,15 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+
 @Controller
-@RequiredArgsConstructor
 public class PostController {
 
-    private final BaseService<Post> postService;
+    private final BaseService<PostDto> postService;
+
+    public PostController(BaseService<PostDto> postService) {
+        this.postService = postService;
+    }
 
     @GetMapping("/")
     public String homePage(@RequestParam(name = "search", required = false) String search, Model model) {
@@ -34,8 +38,8 @@ public class PostController {
 
     @GetMapping("/post/{id}")
     public String showPost(@PathVariable UUID id, Model model) {
-        Post post = postService.getById(id);
-        model.addAttribute("post", post);
+        PostDto postdto = postService.getById(id);
+        model.addAttribute("post", postdto);
         model.addAttribute("comment",  new Comment());
         return "post/post-content";
     }
