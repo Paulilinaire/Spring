@@ -3,8 +3,11 @@ package org.example.exo3_blog.controller;
 import jakarta.validation.Valid;
 import org.example.exo3_blog.entity.Comment;
 import org.example.exo3_blog.entity.Post;
+import org.example.exo3_blog.model.CommentDto;
 import org.example.exo3_blog.model.PostDto;
 import org.example.exo3_blog.service.BaseService;
+import org.example.exo3_blog.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,9 +22,11 @@ import java.util.UUID;
 @Controller
 public class PostController {
 
-    private final BaseService<PostDto> postService;
+    private String location = "upload-dir";
+    private final PostService postService;
 
-    public PostController(BaseService<PostDto> postService) {
+    @Autowired
+    public PostController(PostService postService) {
         this.postService = postService;
     }
 
@@ -30,22 +35,43 @@ public class PostController {
         if (search == null) {
             model.addAttribute("posts", postService.getAll());
         } else {
-            System.out.println(search);
             model.addAttribute("posts", postService.search(search));
         }
         return "homepage";
     }
 
+    @GetMapping("/form")
+    public String formAddPost(Model model){
+        model.addAttribute("post",new PostDto());
+        return "post/form";
+    }
+
+    @PostMapping("/addpost")
+    public String addPost(@Valid @ModelAttribute("post") PostDto post, BindingResult result){
+        postService.create(post);
+        return "post/form";
+    }
+
+
+    @GetMapping("/updatepost")
+    public String formUpdatePost(@RequestParam("postId") UUID id,Model model){
+        PostDto post = postService.getById(id);
+        model.addAttribute("post",post);
+        return "post/form";
+    }
+
+
+
     @GetMapping("/post/{id}")
     public String showPost(@PathVariable UUID id, Model model) {
-        PostDto postdto = postService.getById(id);
-        model.addAttribute("post", postdto);
+        PostDto post = postService.getById(id);
+        model.addAttribute("post", post);
         model.addAttribute("comment",  new Comment());
         return "post/post-content";
     }
 
     @PostMapping("/post/{id}/add-comment")
-    public String addCommentToPost(@Valid @ModelAttribute Comment comment, UUID id, BindingResult result, Model model) {
+    public String addCommentToPost(@Valid @ModelAttribute CommentDto comment, UUID id, Model model, BindingResult result) {
         if (result.hasErrors()) {
             model.addAttribute("postId", id);
             model.addAttribute("comment", comment);
@@ -58,4 +84,13 @@ public class PostController {
             return "redirect:/post/" + id;
         }
     }
+
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("postId") UUID id) {
+        postService.delete(id);
+        return "redirect:";
+    }
+
+
 }

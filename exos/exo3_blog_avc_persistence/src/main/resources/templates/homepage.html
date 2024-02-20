@@ -29,13 +29,13 @@
                 </div>
                 <div class="flex justify-end items-center md:-mx-4">
                     <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0" th:href="@{/}">
-                        <i class="bi bi-house-heart-fill"></i>
+                        <i class="bi bi-house-heart-fill me-1"></i><span>Home</span>
                     </a>
-                    <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0" href="#">
-                        <i class="bi bi-instagram"></i>
+                    <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0" href="@{/addpost}">
+                        <i class="bi bi-patch-plus me-1"></i><span>Add post</span>
                     </a>
                     <a class="my-1 text-gray-100 hover:text-lime-500 md:mx-4 md:my-0 me-5" href="#">
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-fill me-1"></i><span>About me</span>
                     </a>
                     <form class="my-1 flex items-center bg-gray-800" th:action="@{/}" method="get">
                         <input class="text-white bg-gray-600 rounded-l-md p-2" type="search" th:name="search" placeholder="Search post" aria-label="Search">

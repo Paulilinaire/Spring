@@ -1,6 +1,6 @@
 package org.example.exo3_blog.service;
 
-import org.example.exo3_blog.entity.Comment;
+import org.example.exo3_blog.model.CommentDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +16,6 @@ public interface BaseService<T> {
     List<T> search(String search);
 
 
-    boolean addCommentToPost(UUID postId, Comment comment);
+    boolean addCommentToPost(UUID postId, CommentDto comment);
 
 }

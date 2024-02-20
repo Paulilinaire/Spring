@@ -2,13 +2,14 @@
 package org.example.exo3_blog.service;
 
 import org.example.exo3_blog.dao.PostRepository;
-import org.example.exo3_blog.entity.Comment;
 import org.example.exo3_blog.mapper.CommentMapper;
 import org.example.exo3_blog.mapper.PostMapper;
+import org.example.exo3_blog.model.CommentDto;
 import org.example.exo3_blog.model.PostDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,7 @@ import java.util.UUID;
 
     private final CommentMapper commentMapper;
 
-
+    @Autowired
     public PostService(PostRepository postRepository, PostMapper postMapper, CommentMapper commentMapper) {
         this.postRepository = postRepository;
         this.postMapper = postMapper;
@@ -30,9 +31,7 @@ import java.util.UUID;
 
     @Override
     public List<PostDto> getAll() {
-        return postRepository.findAll().stream()
-                .map(postMapper::postToPostDto)
-                .toList();
+        return postRepository.findAll().stream().map(postMapper::postToPostDto).toList();
     }
 
     @Override
@@ -73,11 +72,11 @@ import java.util.UUID;
     }
 
     @Override
-    public boolean addCommentToPost(UUID postId, Comment comment) {
+    public boolean addCommentToPost(UUID postId, CommentDto comment) {
         PostDto post = postMapper.postToPostDto(postRepository.findByIdIs(postId));
         if (post != null) {
             comment.setId(UUID.randomUUID());
-            post.getCommentList().add(comment);
+            post.getCommentList().add(commentMapper.commentDtoToComment(comment));
             return true;
         }
         return false;

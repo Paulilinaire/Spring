@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Content</title>
+    <span th:replace="~{homepage :: styleImports}"></span>
+    <span th:replace="~{homepage :: navbar}"></span>
+</head>
+<body class="bg-gray-100">
+
+<main class="container mt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-8">
+            <h2 class="mb-5 display-5 text-center">
+                <span th:if="${post.id == null}">Add</span>
+                <span th:if="${post.id != null}">Edit</span>
+                post
+            </h2>
+        </div>
+    </div>
+    <div>
+        <div class="row justify-content-lg-center">
+            <div class="col-8">
+                <div class="bg-white border rounded shadow-sm overflow-hidden">
+
+                    <form th:action="@{/addpost}" th:object="${post}"  method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="mb-3">
+                            <label for="titlePost" class="form-label">Title : </label>
+                            <input th:field="*{title}"  type="text" class="form-control" id="titlePost" aria-describedby="etudiantHelp">
+                            <div class="form-text">Title</div>
+                            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descriptionPost" class="form-label">Description : </label>
+                            <input th:field="*{description}"   type="text" class="form-control" id="descriptionPost" aria-describedby="etudiantHelp">
+                            <div class="form-text">Description</div>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contentPost" class="form-label">Content</label>
+                            <input th:field="*{content}" type="text" class="form-control" id="contentPost">
+                            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"><span th:text="${ post.id != null ? 'Edit' : 'Add'}"></span></button>
+                    </form>
+                </div>
+                <div class="text-end mt-3">
+                    <a class="btn btn-dark" th:href="@{/}"><i class="bi bi-arrow-left me-1"></i>Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
+<span th:replace="~{homepage :: footer}"></span>
+
+</body>
+</html>
