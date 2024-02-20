@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire</title>
+</head>
+<body>
+<form method="post" th:action="@{/upload/submitform}" enctype="multipart/form-data">
+    <div>
+        <input type="file" name="image">
+    </div>
+    <div>
+        <button type="submit">valider</button>
+    </div>
+</form>
+
+</body>
+</html>
