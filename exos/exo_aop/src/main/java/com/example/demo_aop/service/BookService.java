@@ -11,7 +11,10 @@ public class BookService {
 
     private final List<Book> books = new ArrayList<>();
 
+    private int currentId;
+
     public void createBook(Book book) {
+        book.setId(currentId++);
         books.add(book);
     }
 

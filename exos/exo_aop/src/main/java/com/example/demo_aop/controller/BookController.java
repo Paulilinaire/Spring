@@ -3,9 +3,7 @@ package com.example.demo_aop.controller;
 import com.example.demo_aop.entity.Book;
 import com.example.demo_aop.service.BookService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +30,12 @@ public class BookController {
         bookService.createBook(book);
 
         return ResponseEntity.ok("ok");
+    }
+
+    @DeleteMapping ("/book/{id}")
+    public void delete(@PathVariable int id){
+        System.out.println("------------ Delete method ------------");
+        bookService.deleteBook(id);
     }
 
 
