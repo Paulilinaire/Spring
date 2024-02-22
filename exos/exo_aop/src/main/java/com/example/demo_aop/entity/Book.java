@@ -1,15 +1,28 @@
 package com.example.demo_aop.entity;
 
-public class Book {
-    private int id;
-    private String title;
-    private String author;
 
-    public int getId() {
+import jakarta.persistence.*;
+
+@Entity
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String title;
+
+    @ManyToOne
+    private Author author;
+
+    public Book() {
+
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -21,11 +34,11 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -35,12 +48,14 @@ public class Book {
         this.setTitle(builder.title);
     }
 
-    public static class Builder {
-        private int id;
-        private String title;
-        private String author;
 
-        public Builder id(int id) {
+
+    public static class Builder {
+        private long id;
+        private String title;
+        private Author author;
+
+        public Builder id(long id) {
             this.id = id;
             return this;
         }
@@ -50,7 +65,7 @@ public class Book {
             return this;
         }
 
-        public Builder author(String author) {
+        public Builder author(Author author) {
             this.author = author;
             return this;
         }

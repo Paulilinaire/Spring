@@ -1,5 +1,8 @@
 package com.example.demo_aop.controller;
 
+import com.example.demo_aop.dto.AuthorDTO;
+import com.example.demo_aop.dto.BookDTO;
+import com.example.demo_aop.entity.Author;
 import com.example.demo_aop.entity.Book;
 import com.example.demo_aop.service.BookService;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("")
+@RestController
+@RequestMapping("books")
 public class BookController {
 
     private final BookService bookService;
@@ -16,27 +20,26 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
-    public List<Book> listingBooks(){
-        System.out.println("------------ Get method ------------");
-        return bookService.getAllBooks();
+    @PostMapping
+    public ResponseEntity<Book> save(@RequestBody BookDTO bookDTO, @RequestBody AuthorDTO authorDTO) {
+        Author author = new Author.Builder()
+                .lastname(authorDTO.getLastname())
+                .firstname(authorDTO.getFirstname())
+                .build();
+
+        Book book = bookService.save(bookDTO.getTitle(), author);
+        return ResponseEntity.ok(book);
     }
 
 
-    @PostMapping("/book")
-    public ResponseEntity<String> post(){
-        System.out.println("------------ Create method ------------");
-        Book book = new Book.Builder().title("Les aventures de Tam").author("Pauline Laout").build();
-        bookService.createBook(book);
-
-        return ResponseEntity.ok("ok");
+    @GetMapping
+    public ResponseEntity<List<Book>> get() {
+        List<Book> books = bookService.findAll();
+        return ResponseEntity.ok(books);
     }
 
-    @DeleteMapping ("/book/{id}")
-    public void delete(@PathVariable int id){
-        System.out.println("------------ Delete method ------------");
-        bookService.deleteBook(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> get(@PathVariable long id) {
+        return ResponseEntity.ok(bookService.findById(id));
     }
-
-
 }
