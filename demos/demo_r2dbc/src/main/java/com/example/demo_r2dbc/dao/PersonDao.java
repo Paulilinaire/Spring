@@ -21,20 +21,20 @@ public class PersonDao {
         this.connectionFactory = connectionFactory;
         databaseClient = DatabaseClient.create(connectionFactory);
         Mono result = databaseClient
-                .sql("CREATE TABLE IF NOT EXISTS person(id int primary key auto_increment, firstname varchar(100), lastname varchar(100))")
+                .sql("CREATE TABLE IF NOT EXISTS person(id int primary key auto_increment, firstname varchar(100), lastname varchar(100)); CREATE TABLE IF NOT EXISTS address (id int primary key auto_increment, full_Address varchar(100), person_Id int);")
                 .then().doOnSuccess((Void) ->  {
                     System.out.println("Création de la table OK");
                 }).doOnError((Void) ->  {
                     System.out.println("Création de la table Not OK");
                 });
-        result.subscribe();
+        result.subscribe(); // souscription importante afin de créer la table, tant qu'il n'y a pas de souscription, ile ne trouvera pas le thread
     }
 
     public Flux<Person> getAll(){
         return databaseClient.sql("SELECT * FROM person").fetch()
                 .all()
                 .map(m -> Person.builder()
-                        .id(Integer.parseInt(m.get("id").toString()))
+                        .id(Long.parseLong(m.get("id").toString()))
                         .firstname(m.get("firstname").toString())
                         .lastname((m.get("lastname").toString()))
                         .build()); // la mapper récupère les données, c'est à nous de les caster (donner le type aux données)
@@ -75,7 +75,7 @@ public class PersonDao {
                 .fetch()
                 .one()
                 .map(m -> Person.builder()
-                        .id(Integer.parseInt(m.get("id").toString()))
+                        .id(Long.parseLong(m.get("id").toString()))
                         .firstname(m.get("firstname").toString())
                         .lastname(m.get("lastname").toString())
                         .build());

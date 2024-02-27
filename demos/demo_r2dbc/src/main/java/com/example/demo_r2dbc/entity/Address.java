@@ -11,16 +11,15 @@ import org.springframework.data.annotation.Transient;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person {
+public class Address {
 
     @Id
     private Long id;
-    private String firstname;
-    private String lastname;
 
-    private Long addressId;
+    private String fullAddress;
+
+    private Long personId;
 
     @Transient
-    private Address address;
-
+    private Person person;
 }
