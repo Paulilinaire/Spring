@@ -1,13 +1,10 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { authHeader } from './helpers/auth-header';
+import { Outlet, Navigate } from 'react-router-dom'
 
-
-function ProtectedRoute({ children, ...rest }) {
-  if (authHeader()) {
-    return children;
-  }
-
-  return <Navigate to="/login" replace />;
+const ProtectedRoute = () => {
+    let auth = {'token': false}
+    return(
+        auth.token ? <Outlet/> : <Navigate to="/login"/>
+    )
 }
 
 export default ProtectedRoute;

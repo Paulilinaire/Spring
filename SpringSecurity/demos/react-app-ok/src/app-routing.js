@@ -7,8 +7,6 @@ import CreateProduct from "./components/CreateProduct";
 import ProtectedRoute from "./ProtectedRoute";
 
 
-
-
 const router = createBrowserRouter([
     {
         path :"/",

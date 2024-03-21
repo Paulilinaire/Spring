@@ -1,13 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from './shared/Header';
-
 
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">  
     <header>
       <Header />
     </header>
