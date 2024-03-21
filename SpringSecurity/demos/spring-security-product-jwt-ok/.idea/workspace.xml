@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18dd67f1-4ea7-4af3-8ac8-781499fe81a9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" afterDir="false" />
@@ -93,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710947731541</updated>
       <workItem from="1710947732817" duration="2278000" />
-      <workItem from="1711007702238" duration="2489000" />
+      <workItem from="1711007702238" duration="2492000" />
     </task>
     <servers />
   </component>
