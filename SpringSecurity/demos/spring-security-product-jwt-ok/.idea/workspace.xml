@@ -5,23 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18dd67f1-4ea7-4af3-8ac8-781499fe81a9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/JwtSpringSecurityApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/JwtSpringSecurityApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/config/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/config/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/jwtspringsecurity/config/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/JwtSpringSecurityApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/JwtSpringSecurityApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/config/jwt/JwtTokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/config/jwt/JwtTokenProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/config/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/jwtspringsecurity/config/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/dto/BaseResponceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/dto/BaseResponceDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/dto/UserLoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/dto/UserLoginDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +25,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2dxRQraknzUnVi5UItipsljxQXq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -49,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.JwtSpringSecurityApplication.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,6 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710947731541</updated>
       <workItem from="1710947732817" duration="2278000" />
+      <workItem from="1711007702238" duration="2489000" />
     </task>
     <servers />
   </component>
