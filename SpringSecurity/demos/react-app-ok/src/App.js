@@ -11,11 +11,7 @@ function App() {
       <Header />
     </header>
     <main className="container mt-5">
-      <div class="row justify-content-md-center">
-        <div class="col-8">
           <Outlet />
-          </div>
-      </div>
     </main>
   </div>
   );

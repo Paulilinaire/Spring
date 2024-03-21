@@ -1,6 +1,6 @@
-package com.m2ibank.config.jwt;
+package com.example.backendspringsecurity.config.jwt;
 
-import com.m2ibank.service.CustomerService;
+import com.example.backendspringsecurity.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
 import java.io.IOException;
 
 @Component
@@ -23,15 +22,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenProvider tokenGenerator;
 
-    private final CustomerService customerService;
+    private final UserService userService;
 
     @Autowired
     JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    public JwtRequestFilter(CustomerService customerService) {
-        this.customerService = customerService;
+    public JwtRequestFilter(UserService userService) {
+        this.userService = userService;
     }
-
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -42,7 +40,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             if (token != null && tokenGenerator.validateToken(token)) {
                 String username = tokenGenerator.getUsernameFromToken(token);
 
-                UserDetails userDetails = customerService.loadUserByUsername(username);
+                UserDetails userDetails = userService.loadUserByUsername(username);
 
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
@@ -53,8 +51,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
 
             filterChain.doFilter(request, response);
+
         } catch (AuthenticationException e) {
             jwtAuthenticationEntryPoint.commence(request, response, e);
+
         }
     }
 

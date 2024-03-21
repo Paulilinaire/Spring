@@ -1,9 +1,9 @@
-package com.m2ibank.config.security;
+package com.example.backendspringsecurity.config.security;
 
 
-import com.m2ibank.config.jwt.JwtRequestFilter;
-import com.m2ibank.service.CustomerService;
-import com.m2ibank.config.jwt.JwtAuthenticationEntryPoint;
+import com.example.backendspringsecurity.config.jwt.JwtAuthenticationEntryPoint;
+import com.example.backendspringsecurity.config.jwt.JwtRequestFilter;
+import com.example.backendspringsecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +16,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+import java.util.Collections;
 
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final CustomerService customerService;
+    private final UserService userService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    public SecurityConfig(CustomerService customerService, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
-        this.customerService = customerService;
+    public SecurityConfig(UserService userService, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
+        this.userService = userService;
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
     }
 
@@ -35,12 +40,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/auth/**", "/notices", "/contact").permitAll()
-                        .requestMatchers("/myAccount", "/myLoans", "/myCards").hasRole("USER")
-                        .requestMatchers("/myBalance").hasRole("ADMIN")
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("api/tasks/admin/**").hasRole("ADMIN")
+                        .requestMatchers("api/tasks/user/**").hasRole("USER")
                         .anyRequest().authenticated())
                 .exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -59,7 +64,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtRequestFilter jwtAuthenticationFilter() {
-        return new JwtRequestFilter(customerService);
+        return new JwtRequestFilter(userService);
     }
 
     @Bean
@@ -67,6 +72,17 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(Collections.singletonList("*")); // Permettre toutes les origines
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); // Permettre toutes les méthodes
+        configuration.setAllowedHeaders(Arrays.asList("*")); // Permettre tous les headers
+        configuration.setAllowCredentials(true); // Important pour les cookies, l'autorisation, etc.
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration); // Appliquer cette configuration à tous les chemins
+        return source;
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.jwtspringsecurity.dto;
+package com.m2ibank.dto;
 
 public class BaseResponceDto {
     private Object message;

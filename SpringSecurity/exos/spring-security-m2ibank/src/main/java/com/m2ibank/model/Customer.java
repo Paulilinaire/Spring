@@ -19,7 +19,7 @@ public class Customer {
     @Column(name = "mobile_number")
     private String mobileNumber;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;
 
     private String role;

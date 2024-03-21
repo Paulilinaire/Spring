@@ -1,6 +1,5 @@
-package com.m2ibank.config.jwt;
+package com.example.backendspringsecurity.config.jwt;
 
-import com.m2ibank.config.jwt.JwtAuthenticationEntryPoint;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.util.Base64;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenProvider {
@@ -24,6 +24,7 @@ public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String secret;
 
+    // Convertit la clé secrète en format utilisable par l'algorithme de signature
     private SecretKey getSigningKey() {
         byte[] keyBytes = Base64.getDecoder().decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
@@ -34,8 +35,15 @@ public class JwtTokenProvider {
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + 86400000); // 24 heures
 
+        String  roles = auth.getAuthorities()
+                .stream()
+                .map(grantedAuthority -> grantedAuthority.getAuthority())
+                .collect(Collectors.joining(","));
+
+
         String token = Jwts.builder()
                 .setSubject(username)
+                .claim("roles", roles)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)

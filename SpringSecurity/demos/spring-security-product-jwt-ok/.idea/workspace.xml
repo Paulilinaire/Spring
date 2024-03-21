@@ -5,6 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18dd67f1-4ea7-4af3-8ac8-781499fe81a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/config/jwt/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/config/jwt/JwtRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/config/jwt/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/config/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/controller/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/dto/BaseResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/dto/UserLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/model/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/model/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/model/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/repository/RolesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/repository/TaskRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/service/ITaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/service/TaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exos/TodoList-full-stack/back-end-spring-security/src/main/java/com/example/backendspringsecurity/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/app-routing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/components/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/components/ProductList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/components/Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/services/authService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/services/productService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app1/src/shared/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-app-ok/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-app-ok/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-app-ok/src/ProtectedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-app-ok/src/ProtectedRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-app-ok/src/app-routing.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-app-ok/src/app-routing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-app-ok/src/components/CreateProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-app-ok/src/components/CreateProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-app-ok/src/components/ProductList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-app-ok/src/components/ProductList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtRequestFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exos/spring-security-m2ibank/src/main/java/com/m2ibank/config/jwt/JwtTokenProvider.java" afterDir="false" />
@@ -34,25 +83,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.JwtSpringSecurityApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.JwtSpringSecurityApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="spring-security-product-jwt" />
@@ -91,7 +140,8 @@
       <option name="presentableId" value="Default" />
       <updated>1710947731541</updated>
       <workItem from="1710947732817" duration="2278000" />
-      <workItem from="1711007702238" duration="2492000" />
+      <workItem from="1711007702238" duration="4225000" />
+      <workItem from="1711025175329" duration="7730000" />
     </task>
     <servers />
   </component>

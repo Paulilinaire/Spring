@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { productService } from '../services/productService';
-import CreateProduct from './CreateProduct'; // Import CreateProduct component
-import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
+import UpdateProductModal from './UpdateProductModal';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
-  const { id } = useParams(); // Récupérer l'ID de l'URL
-  const [productToEdit, setProductToEdit] = useState(null); 
 
   useEffect(() => {
     productService.getAllProducts()
@@ -18,18 +15,32 @@ function ProductList() {
       .catch(error => {
         setError('Erreur lors de la récupération des produits.');
       });
+  }, []);
 
-    if (id) {
-      // Si un ID est présent dans l'URL, fetch le produit correspondant
-      productService.getProductById(id)
-        .then(response => {
-          setProductToEdit(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching product data: ', error);
-        });
-    }
-  }, [id]); // Assurez-vous de déclencher cet effet à chaque fois que l'ID change
+
+  const loadProducts = () => {
+    productService.getAllProducts()
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        setError('Erreur lors de la récupération des produits.');
+      });
+  };
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const updateProduct = (productData) => {
+    console.log("product " + productData.name)
+    productService.updateProduct(productData)
+      .then(() => {
+        loadProducts();
+        setSelectedProduct(null);
+      })
+      .catch(error => {
+        setError('Erreur lors de la mise à jour du produit.');
+      });
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -48,7 +59,7 @@ function ProductList() {
       {error && <div className="alert alert-danger" role="alert">
         {error}
       </div>}
-      <table className="table">
+      <table className="table text-center">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -64,14 +75,20 @@ function ProductList() {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>
-                <button onClick={() => handleDelete(product.id)} className='btn btn-outline-danger'>Supprimer</button>
-                <button onClick={() => setProductToEdit(product)} className='btn btn-outline-warning'>Editer</button>
+                <button onClick={() => handleDelete(product.id)} className='btn btn-danger mr-2'>Supprimer</button>
+                <button className='btn btn-warning' onClick={() => setSelectedProduct(product)}>Update</button>
               </td>
             </tr>
           ))}
+          {selectedProduct && (
+                  <UpdateProductModal
+                    product={selectedProduct}
+                    onSave={updateProduct}
+                    onCancel={() => setSelectedProduct(null)}
+                  />
+                )}
         </tbody>
       </table>
-      {productToEdit && <CreateProduct product={productToEdit} />}
     </div>
   );
 }

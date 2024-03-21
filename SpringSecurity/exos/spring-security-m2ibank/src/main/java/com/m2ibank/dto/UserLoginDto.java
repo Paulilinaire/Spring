@@ -1,8 +1,8 @@
-package com.example.jwtspringsecurity.dto;
+package com.m2ibank.dto;
 
 public class UserLoginDto {
     private String email;
-    private String password;
+    private String pwd;
 
     public String getEmail() {
         return email;
@@ -12,11 +12,13 @@ public class UserLoginDto {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
+
+    }
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

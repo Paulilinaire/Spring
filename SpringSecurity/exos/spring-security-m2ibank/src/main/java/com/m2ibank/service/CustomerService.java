@@ -34,7 +34,7 @@ public class CustomerService implements UserDetailsService {
 
     public boolean verifyCustomer(String email, String password) {
         return customerRepository.findByEmail(email)
-                .stream().map(customer -> passwordEncoder.matches(password, customer.getPwd()))
+                .map(customer -> passwordEncoder.matches(password, customer.getPwd()))
                 .orElseThrow(() -> new UsernameNotFoundException("Customer not found with email: " + email));
     }
 
@@ -45,8 +45,7 @@ public class CustomerService implements UserDetailsService {
     public String generateToken(String email, String password){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = tokenProvider.generateToken(authentication);
-        return token;
+        return tokenProvider.generateToken(authentication);
     }
 
     public boolean createUser(Customer customer){
@@ -57,7 +56,7 @@ public class CustomerService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return customerRepository.findByEmail(email)
+        return (UserDetails) customerRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
