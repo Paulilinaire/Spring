@@ -3,7 +3,7 @@ import { authHeader } from '../helpers/auth-header';
 import { getUserDetails } from '../helpers/user-details';
 
 const getAllTasks = () => {
-  return api.get('/tasks');
+  return api.get('/tasks/user');
 };
 
 const getAllTasksByUserId = (id) => {

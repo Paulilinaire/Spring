@@ -8,6 +8,7 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "role")
     private String role;
 
     @OneToOne(mappedBy = "roles")

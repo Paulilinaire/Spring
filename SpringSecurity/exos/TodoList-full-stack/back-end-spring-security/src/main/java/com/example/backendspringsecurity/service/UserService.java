@@ -33,14 +33,14 @@ public class UserService implements UserDetailsService{
     private PasswordEncoder passwordEncoder;
 
 
-    public boolean verifyUser(String name, String password) {
-        return userRepository.findByName(name)
+    public boolean verifyUser(String email, String password) {
+        return userRepository.findByEmail(email)
                 .map(user -> passwordEncoder.matches(password, user.getPassword()))
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with name: " + name));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
-    public boolean checkUserNameExists(String name){
-        return userRepository.findByName(name).isPresent();
+    public boolean checkUserNameExists(String email){
+        return userRepository.findByEmail(email).isPresent();
     }
 
 
@@ -58,9 +58,9 @@ public class UserService implements UserDetailsService{
     }
 
     @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        return userRepository.findByName(name)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with name: " + name));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
 }

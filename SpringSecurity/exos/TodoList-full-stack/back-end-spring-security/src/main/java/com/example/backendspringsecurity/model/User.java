@@ -1,5 +1,6 @@
 package com.example.backendspringsecurity.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +28,7 @@ public class User implements UserDetails {
     private Roles roles;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Task> tasks;
+    private List<Task> tasklist;
 
 
     private boolean isEnabled=true;
@@ -108,12 +109,12 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    public List<Task> getTasklist() {
+        return tasklist;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setTasklist(List<Task> tasklist) {
+        this.tasklist = tasklist;
     }
 
     public void setEnabled(boolean enabled) {

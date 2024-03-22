@@ -31,11 +31,11 @@ public class UserController {
 
     @PostMapping("/login")
     public BaseResponseDto loginUser(@RequestBody UserLoginDto loginDetails){
-        if(userService.checkUserNameExists(loginDetails.getName())){
-            if(userService.verifyUser(loginDetails.getName(), loginDetails.getPassword())){
+        if(userService.checkUserNameExists(loginDetails.getEmail())){
+            if(userService.verifyUser(loginDetails.getEmail(), loginDetails.getPassword())){
                 Map<String, Object> data = new HashMap<>();
 
-                data.put("token", userService.generateToken(loginDetails.getName(), loginDetails.getPassword()));
+                data.put("token", userService.generateToken(loginDetails.getEmail(), loginDetails.getPassword()));
                 return new BaseResponseDto("success", data);
             }else {
 

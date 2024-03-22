@@ -4,8 +4,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 import ProtectedRoute from "./ProtectedRoute";
-import TaskList from "./components/TaskList";
 import CreateTask from "./components/CreateTask";
+import TaskList from "./components/TaskList";
 
 
 const router = createBrowserRouter([

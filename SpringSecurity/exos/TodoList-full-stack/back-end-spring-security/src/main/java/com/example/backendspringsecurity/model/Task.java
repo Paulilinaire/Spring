@@ -1,7 +1,6 @@
 package com.example.backendspringsecurity.model;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 
 @Entity
@@ -13,7 +12,7 @@ public class Task {
 
     private String title;
 
-    private String desc;
+    private String description;
 
     private boolean isCompleted;
 
@@ -40,12 +39,12 @@ public class Task {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public boolean isCompleted() {
