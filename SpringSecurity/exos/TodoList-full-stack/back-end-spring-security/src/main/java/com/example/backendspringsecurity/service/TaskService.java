@@ -56,7 +56,7 @@ public class TaskService implements ITaskService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            return user.getTasks();
+            return user.getTasklist();
         } else {
             // If the user is not found, I return an empty list
             return Collections.emptyList();
