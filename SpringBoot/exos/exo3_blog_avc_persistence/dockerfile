@@ -1,0 +1,33 @@
+# Build de l'app avec maven
+FROM maven AS build 
+
+WORKDIR /app
+
+# Envoyer toutes les dépendances de notre projet
+COPY pom.xml ./
+
+RUN mvn dependency:go-offline
+
+# Copier les fichiers sources et execution de la construction
+COPY src ./src 
+
+RUN mvn package -DskipTests 
+
+
+#Déploiement
+FROM openjdk AS deploy
+
+WORKDIR /app
+
+# Copie de l'artifact JAR depuis l'étape précédente (artifactId-version.jar)
+COPY --from=build /app/target/exo3_blog-0.0.1-SNAPSHOT.jar .
+
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "exo3_blog-0.0.1-SNAPSHOT.jar"]
+
+
+# et dans le terminal 
+# docker build --no-cache -t springapp .
+# docker run --name containerspring -p 9090:8080 -d springapp
