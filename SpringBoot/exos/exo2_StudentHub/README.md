@@ -1,53 +1,50 @@
-# StudentHub Application Java, Spring en MVC (model, view, controller)
+# StudentHub Application: Java Spring MVC
 
-## Application de gestion d'étudiants 
+## Student Management System
 
-- Méthode CRUD en restcontroller et controller  
-- Simulation d'une base de donnée dans le StudentService 
+- Implements CRUD operations with restcontroller and controller  
+- Simulates a database in StudentService 
 
-On souhaite créer une application web qui va nous permettre de gérer des étudiants, c'est-à-dire :
+### Description:
 
-Créer un étudiant (nom, prénom, âge, email)
-Lister tous les étudiants (nom et prénom)
-Rechercher un étudiant par son nom
-Voir le détail d'un étudiant
+This is a web application designed to manage students. It provides the following functionalities:
 
-Il nous faudra donc plusieurs pages web (au minimum) :
+- Creating a student (including fields: name, surname, age, email)
+- Listing all students (only displaying name and surname)
+- Searching for a student by name
+- Viewing detailed information of a student
 
-- Accueil
-- Inscription
-- Liste des étudiants
-- Détails d'un étudiant
-- Résultat de la recherche d'un étudiant
+### Pages:
 
-On pourra, à partir de la page d'accueil, se rendre sur :
+The application consists of several web pages:
 
-- La liste des étudiants
-- La page d'inscription
-- Faire une recherche d'un étudiant
+1. **Home**: 
+   - Provides navigation to other pages: 
+     - List of students
+     - Registration page
+     - Student search
 
-Sur la page d'inscription, il sera possible de :
+2. **Registration**: 
+   - Allows users to fill out a form to register a new student
+   - Upon submission, redirects to the student list page
+   - Includes a link to return to the home page
 
-- Remplir un formulaire et être redirigé vers la page liste des étudiants
-- Revenir à l'accueil
+3. **Student List**: 
+   - Displays a list of all students (only name and surname)
+   - Provides a "View Details" button or link for each student to see their detailed information
+   - Includes a link to return to the home page
 
-Sur la page de la liste des étudiants :
+4. **Student Details**: 
+   - Shows all information of a selected student
+   - Contains buttons or links to return to the student list or home page
 
-- À côté de chaque étudiant (seul le nom et le prénom sont affichés), un lien ou un bouton "Voir détails" pour accéder à la page des détails de l'étudiant
-- Un lien ou un bouton pour revenir à l'accueil
+5. **Search Results**: 
+   - Displays the list of students found based on search criteria
+   - Provides a button or link to view the details of a student
+   - If no results are found, displays a message indicating "No results found"
+   - Includes a link to return to the home page
 
-La page de détails de l'étudiant :
-
-- Affiche toutes les informations d'un étudiant
-- Un bouton ou un lien pour revenir à la liste
-- Un bouton ou un lien pour revenir à l'accueil
-
-La page de recherche :
-
-- Affiche la liste des étudiants trouvés et un bouton ou un lien pour voir les détails de l'étudiant.
-OU
-- Affiche "Aucun résultat trouvé"
-- Un bouton ou un lien pour revenir à l'accueil
+### Screenshots:
 
 ![Screenshot1](screenshots/localhost_8080.png)
 ![Screenshot2](screenshots/localhost_8080_students-1.png)
@@ -56,4 +53,5 @@ OU
 ![Screenshot5](screenshots/localhost_8080_look_namestudent=so.png)
 ![Screenshot6](screenshots/localhost_8080_add%20(1).png)
 ![Screenshot7](screenshots/localhost_8080_edit_672ff0b3-2a1d-4635-808e-a448e0220920.png)
+
 
